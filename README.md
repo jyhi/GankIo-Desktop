@@ -6,7 +6,8 @@ Yet another [gank.io](http://gank.io) client.
 
 To build **Gank.io Desktop**, you need to install the following dependencies first:
 
-- GTK+ 3.2+
+- GTK+ 3.20
+  - This may shock you, but yes, **I haven't tested on lower versions yet. Welcome to send me compability reports.**
 
 On Linux, simply type `make && make install` to make it be at post.
 
