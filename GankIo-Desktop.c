@@ -29,7 +29,7 @@ int main (int argc, char **argv)
     gtk_init (&argc, &argv);
 
     // Keep compability of GTK+ <= 3.10
-    //   https://developer.gnome.org/gtk3/stable/GtkBuilder.html#gtk-builder-add-from-file
+    //   https://developer.gnome.org/gtk3/stable/GtkBuilder.html#gtk-builder-new-from-file
     builder = gtk_builder_new ();
     retVal  = gtk_builder_add_from_file (builder, "frmMain.glade", NULL);
     if (retVal != 0) {
