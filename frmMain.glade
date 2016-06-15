@@ -8,18 +8,14 @@
   <object class="GtkListStore" id="listStoreIos"/>
   <object class="GtkListStore" id="listStoreSearch"/>
   <object class="GtkApplicationWindow" id="frmMain">
-    <property name="width_request">800</property>
-    <property name="height_request">505</property>
     <property name="can_focus">False</property>
-    <property name="margin_left">10</property>
-    <property name="margin_right">10</property>
-    <property name="margin_top">10</property>
-    <property name="margin_bottom">10</property>
+    <property name="border_width">10</property>
     <property name="title" translatable="yes" context="Application Title">Gank.io Desktop</property>
     <property name="window_position">center</property>
+    <property name="default_width">800</property>
+    <property name="default_height">505</property>
     <property name="destroy_with_parent">True</property>
     <property name="icon_name">applications-internet</property>
-    <property name="gravity">center</property>
     <child>
       <object class="GtkBox">
         <property name="visible">True</property>
