@@ -51,38 +51,12 @@
                 <property name="can_focus">False</property>
                 <property name="orientation">vertical</property>
                 <child>
-                  <object class="GtkButtonBox">
+                  <object class="GtkStackSwitcher">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="homogeneous">True</property>
-                    <property name="layout_style">center</property>
-                    <child>
-                      <object class="GtkToggleButton" id="toggleBtnToday">
-                        <property name="label" translatable="yes" context="Top Bar">Today</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">True</property>
-                        <property name="active">True</property>
-                      </object>
-                      <packing>
-                        <property name="expand">True</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkToggleButton" id="toggleBtnSortedData">
-                        <property name="label" translatable="yes" context="Top Bar">Sorted Data</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">True</property>
-                      </object>
-                      <packing>
-                        <property name="expand">True</property>
-                        <property name="fill">True</property>
-                        <property name="position">1</property>
-                      </packing>
-                    </child>
+                    <property name="halign">center</property>
+                    <property name="valign">center</property>
+                    <property name="stack">stackDailySorted</property>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -584,9 +558,11 @@
                         </child>
                       </object>
                       <packing>
-                        <property name="name">page0</property>
-                        <property name="title" translatable="yes">page0</property>
+                        <property name="title" translatable="yes" context="For the use of stack switcher on the top bar.">Today</property>
                       </packing>
+                    </child>
+                    <child>
+                      <placeholder/>
                     </child>
                   </object>
                   <packing>
