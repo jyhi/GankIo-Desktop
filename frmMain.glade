@@ -52,12 +52,12 @@
                     <property name="homogeneous">True</property>
                     <property name="layout_style">center</property>
                     <child>
-                      <object class="GtkButton" id="btnToday">
+                      <object class="GtkToggleButton" id="toggleBtnToday">
                         <property name="label" translatable="yes" context="Top Bar">Today</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
-                        <signal name="clicked" handler="btn_today_clicked" object="stackDailySorted" swapped="no"/>
+                        <property name="active">True</property>
                       </object>
                       <packing>
                         <property name="expand">True</property>
@@ -66,12 +66,11 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkButton" id="btnSortedResources">
+                      <object class="GtkToggleButton" id="toggleBtnSortedData">
                         <property name="label" translatable="yes" context="Top Bar">Sorted Data</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
-                        <signal name="clicked" handler="btn_sorted_resources_clicked" swapped="no"/>
                       </object>
                       <packing>
                         <property name="expand">True</property>
