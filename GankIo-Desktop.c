@@ -20,7 +20,7 @@
 #include <stdlib.h>
 #include <gtk/gtk.h>
 
-int main (int argc, char **argv)
+gint main (gint argc, gchar **argv)
 {
     guint retVal;
     GtkWidget *frmMain;
@@ -33,7 +33,12 @@ int main (int argc, char **argv)
     builder = gtk_builder_new ();
     retVal  = gtk_builder_add_from_file (builder, "frmMain.glade", NULL);
     if (retVal != 0) {
+        // Get object handles
         frmMain = GTK_WIDGET (gtk_builder_get_object (builder, "frmMain"));
+
+        // Connect signals.
+        // For particular signals, please refer to Glade files.
+        gtk_builder_connect_signals (builder, NULL);
 
         gtk_widget_show_all (frmMain);
         gtk_main ();
