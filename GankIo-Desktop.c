@@ -109,7 +109,7 @@ void searchBarMain_show_cb (GtkWidget *searchBar, GtkWidget *stackContectSearch)
     if (child) {
         gtk_stack_set_visible_child (GTK_STACK (stackContectSearch), child);
     } else {
-        g_warning ("child not found");
+        g_warning ("Cannot switch between content and search: child not found");
     }
 
     return;
@@ -120,7 +120,11 @@ void searchBarMain_hide_cb (GtkWidget *searchBar, GtkWidget *stackContectSearch)
     // When the search bar hides, the content screen should shows.
     // NOTE: Get another child first. See searchBarMain_show_cb.
     GtkWidget *child = gtk_stack_get_child_by_name (GTK_STACK (stackContectSearch), "Content");
-    gtk_stack_set_visible_child (GTK_STACK (stackContectSearch), child);
+    if (child) {
+        gtk_stack_set_visible_child (GTK_STACK (stackContectSearch), child);
+    } else {
+        g_warning ("Cannot switch between content and search: child not found");
+    }
 
     return;
 }
