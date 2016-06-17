@@ -53,6 +53,7 @@
           <object class="GtkStack" id="stackContentSearch">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="transition_type">crossfade</property>
             <child>
               <object class="GtkBox" id="boxContent">
                 <property name="visible">True</property>
@@ -586,6 +587,7 @@
               <object class="GtkStack" id="stackSearchTipResults">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="transition_type">crossfade</property>
                 <child>
                   <object class="GtkLabel" id="lblSearchTop">
                     <property name="visible">True</property>
