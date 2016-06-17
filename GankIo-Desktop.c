@@ -30,13 +30,7 @@ gint main (gint argc, gchar **argv)
 
     gtk_init (&argc, &argv);
 
-    // Keep compability of GTK+ <= 3.10
-    //   https://developer.gnome.org/gtk3/stable/GtkBuilder.html#gtk-builder-new-from-file
-    builder = gtk_builder_new ();
-    retVal  = gtk_builder_add_from_file (builder, "frmMain.glade", NULL);
-    if (retVal != 0) {
-        // Get object handles
-        frmMain = GTK_WIDGET (gtk_builder_get_object (builder, "frmMain"));
+    builder = gtk_builder_new_from_file ("frmMain.glade");
 
         // Connect signals.
         // For particular signals, please refer to Glade files.
