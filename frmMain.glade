@@ -24,24 +24,6 @@
         <property name="orientation">vertical</property>
         <property name="spacing">5</property>
         <child>
-          <object class="GtkSearchEntry" id="searchBarTop">
-            <property name="width_request">400</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="tooltip_text" translatable="yes" context="Search Bar">Search for stuff online</property>
-            <property name="halign">center</property>
-            <property name="valign">center</property>
-            <property name="truncate_multiline">True</property>
-            <property name="primary_icon_tooltip_text" translatable="yes">Search goods</property>
-            <property name="placeholder_text" translatable="yes">Search</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">0</property>
-          </packing>
-        </child>
-        <child>
           <object class="GtkStack" id="stackContentSearch">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
@@ -560,9 +542,6 @@
                       <packing>
                         <property name="title" translatable="yes" context="For the use of stack switcher on the top bar.">Today</property>
                       </packing>
-                    </child>
-                    <child>
-                      <placeholder/>
                     </child>
                   </object>
                   <packing>

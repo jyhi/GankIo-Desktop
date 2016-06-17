@@ -20,6 +20,8 @@
 #include <stdlib.h>
 #include <gtk/gtk.h>
 
+GtkWidget * header_bar_create ();
+
 gint main (gint argc, gchar **argv)
 {
     guint retVal;
@@ -40,9 +42,32 @@ gint main (gint argc, gchar **argv)
         // For particular signals, please refer to Glade files.
         gtk_builder_connect_signals (builder, NULL);
 
+        // Add a header bar for frmMain to make it prettier.
+        // NOTE: It's impossible to create it in Glade.
+        GtkWidget *headerBar = header_bar_create ();
+        gtk_window_set_titlebar (GTK_WINDOW (frmMain), headerBar);
+
         gtk_widget_show_all (frmMain);
         gtk_main ();
     }
 
     return 0;
+}
+
+GtkWidget * header_bar_create ()
+{
+    GtkWidget *header = gtk_header_bar_new ();
+    gtk_header_bar_set_show_close_button (GTK_HEADER_BAR (header), TRUE);
+    gtk_header_bar_set_title (GTK_HEADER_BAR (header), "Gank.io Desktop");
+    gtk_header_bar_set_has_subtitle (GTK_HEADER_BAR (header), FALSE);
+
+    // Search button on the right
+    GtkWidget *btn = gtk_button_new ();
+    GIcon *icon = g_themed_icon_new ("search-symbolic");
+    GtkWidget *image = gtk_image_new_from_gicon (icon, GTK_ICON_SIZE_BUTTON);
+    g_object_unref (icon);
+    gtk_container_add (GTK_CONTAINER (btn), image);
+    gtk_header_bar_pack_end (GTK_HEADER_BAR (header), btn);
+
+    return header;
 }
