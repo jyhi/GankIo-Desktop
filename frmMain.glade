@@ -17,12 +17,37 @@
     <property name="destroy_with_parent">True</property>
     <property name="icon_name">applications-internet</property>
     <signal name="destroy" handler="exit" swapped="no"/>
+    <signal name="key-press-event" handler="frmMain_key_press_event_cb" object="searchBarMain" swapped="no"/>
     <child>
-      <object class="GtkBox">
+      <object class="GtkBox" id="boxMain">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
         <property name="spacing">5</property>
+        <child>
+          <object class="GtkSearchBar" id="searchBarMain">
+            <property name="app_paintable">True</property>
+            <property name="can_focus">False</property>
+            <property name="no_show_all">True</property>
+            <child>
+              <object class="GtkSearchEntry" id="searchEntryMain">
+                <property name="width_request">400</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="primary_icon_name">edit-find-symbolic</property>
+                <property name="primary_icon_activatable">False</property>
+                <property name="primary_icon_sensitive">False</property>
+                <property name="placeholder_text" translatable="yes">Search</property>
+                <signal name="stop-search" handler="searchEntryMain_stop_search_cb" object="searchBarMain" swapped="no"/>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
         <child>
           <object class="GtkStack" id="stackContentSearch">
             <property name="visible">True</property>

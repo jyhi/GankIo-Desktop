@@ -21,10 +21,11 @@
 #include <gtk/gtk.h>
 
 GtkWidget * header_bar_create ();
+gboolean frmMain_key_press_event_cb (GtkWidget *widget, GdkEvent *event, GtkWidget *searchBar);
+void searchEntryMain_stop_search_cb (GtkSearchEntry *entry, GtkWidget *searchBar);
 
 gint main (gint argc, gchar **argv)
 {
-    guint retVal;
     GtkWidget *frmMain;
     GtkBuilder *builder;
 
@@ -32,18 +33,20 @@ gint main (gint argc, gchar **argv)
 
     builder = gtk_builder_new_from_file ("frmMain.glade");
 
-        // Connect signals.
-        // For particular signals, please refer to Glade files.
-        gtk_builder_connect_signals (builder, NULL);
+    // Get object handles
+    frmMain = GTK_WIDGET (gtk_builder_get_object (builder, "frmMain"));\
 
-        // Add a header bar for frmMain to make it prettier.
-        // NOTE: It's impossible to create it in Glade.
-        GtkWidget *headerBar = header_bar_create ();
-        gtk_window_set_titlebar (GTK_WINDOW (frmMain), headerBar);
+    // Connect signals.
+    // For particular signals, please refer to Glade files.
+    gtk_builder_connect_signals (builder, NULL);
 
-        gtk_widget_show_all (frmMain);
-        gtk_main ();
-    }
+    // Add a header bar for frmMain to make it prettier.
+    // NOTE: It's impossible to create it in Glade.
+    GtkWidget *headerBar = header_bar_create ();
+    gtk_window_set_titlebar (GTK_WINDOW (frmMain), headerBar);
+
+    gtk_widget_show_all (frmMain);
+    gtk_main ();
 
     return 0;
 }
@@ -63,5 +66,31 @@ GtkWidget * header_bar_create ()
     gtk_container_add (GTK_CONTAINER (btn), image);
     gtk_header_bar_pack_end (GTK_HEADER_BAR (header), btn);
 
+    // Search bar integration
+    // GtkWidget *searchBar = gtk_search_bar_new ();
+    // gtk_box_pack_start (GTK_BOX (box), searchBar, FALSE, FALSE, 0);
+    // GtkWidget *searchEntry = gtk_search_entry_new ();
+    // gtk_container_add (GTK_CONTAINER (searchBar), searchEntry);
+
+    // Connect the search button's XXX to the search entry
+
     return header;
+}
+
+gboolean frmMain_key_press_event_cb (GtkWidget *widget, GdkEvent *event, GtkWidget *searchBar)
+{
+    // Search bar on the top is by default hidden. Show it if it's hiding.
+    if (!gtk_widget_is_visible (searchBar)) {
+        gtk_widget_show (searchBar);
+    } else {}
+
+    return gtk_search_bar_handle_event (GTK_SEARCH_BAR (searchBar), event);
+}
+
+void searchEntryMain_stop_search_cb (GtkSearchEntry *entry, GtkWidget *searchBar)
+{
+    // After searching, hide the search bar.
+    if (gtk_widget_is_visible (searchBar)) {
+        gtk_widget_hide (searchBar);
+    } else {}
 }
