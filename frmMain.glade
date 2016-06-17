@@ -17,7 +17,6 @@
     <property name="destroy_with_parent">True</property>
     <property name="icon_name">applications-internet</property>
     <signal name="destroy" handler="exit" swapped="no"/>
-    <signal name="key-press-event" handler="frmMain_key_press_event_cb" object="searchBarMain" swapped="no"/>
     <child>
       <object class="GtkBox" id="boxMain">
         <property name="visible">True</property>
@@ -29,6 +28,8 @@
             <property name="app_paintable">True</property>
             <property name="can_focus">False</property>
             <property name="no_show_all">True</property>
+            <signal name="hide" handler="searchBarMain_hide_cb" object="stackContentSearch" swapped="no"/>
+            <signal name="show" handler="searchBarMain_show_cb" object="stackContentSearch" swapped="no"/>
             <child>
               <object class="GtkSearchEntry" id="searchEntryMain">
                 <property name="width_request">400</property>
@@ -53,7 +54,7 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <child>
-              <object class="GtkBox">
+              <object class="GtkBox" id="boxContent">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="orientation">vertical</property>
@@ -577,8 +578,8 @@
                 </child>
               </object>
               <packing>
-                <property name="name">page0</property>
-                <property name="title" translatable="yes">page0</property>
+                <property name="name">Content</property>
+                <property name="title" translatable="yes" context="This page title is not visible to user.">Content</property>
               </packing>
             </child>
             <child>
@@ -617,8 +618,8 @@
                 </child>
               </object>
               <packing>
-                <property name="name">page1</property>
-                <property name="title" translatable="yes">page1</property>
+                <property name="name">SearchResultsTips</property>
+                <property name="title" translatable="yes" context="This page title is not visible to user.">SearchResultsTips</property>
                 <property name="position">1</property>
               </packing>
             </child>
