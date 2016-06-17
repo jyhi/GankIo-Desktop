@@ -22,7 +22,7 @@
 
 GtkWidget * header_bar_create (GtkWidget *searchBar);
 void searchEntryMain_stop_search_cb (GtkSearchEntry *entry, GtkWidget *searchBar);
-void btnSearch_clicked_cb (GtkButton *btn, GtkWidget *searchBar);
+void btnSearch_toggled_cb (GtkToggleButton *btn, GtkWidget *searchBar);
 void searchBarMain_show_cb (GtkWidget *searchBar, GtkWidget *stackContectSearch);
 void searchBarMain_hide_cb (GtkWidget *searchBar, GtkWidget *stackContectSearch);
 
@@ -63,15 +63,15 @@ GtkWidget * header_bar_create (GtkWidget *searchBar)
     gtk_header_bar_set_has_subtitle (GTK_HEADER_BAR (header), FALSE);
 
     // Search button on the right
-    GtkWidget *btn = gtk_button_new ();
+    GtkWidget *btn = gtk_toggle_button_new ();
     GIcon *icon = g_themed_icon_new ("search-symbolic");
     GtkWidget *image = gtk_image_new_from_gicon (icon, GTK_ICON_SIZE_BUTTON);
     g_object_unref (icon);
     gtk_container_add (GTK_CONTAINER (btn), image);
     gtk_header_bar_pack_end (GTK_HEADER_BAR (header), btn);
 
-    // Connect the search button's "clicked" signal to the search bar
-    g_signal_connect (btn, "clicked", G_CALLBACK (btnSearch_clicked_cb), searchBar);
+    // Connect the search button's "toggled" signal to the search bar
+    g_signal_connect (btn, "toggled", G_CALLBACK (btnSearch_toggled_cb), searchBar);
 
     return header;
 }
@@ -83,15 +83,19 @@ void searchEntryMain_stop_search_cb (GtkSearchEntry *entry, GtkWidget *searchBar
         gtk_widget_hide (searchBar);
     } else {}
 
+    // FIXME: Pressing ESC to stop searching causes unsynchronization between search button and content.
+
     return;
 }
 
-void btnSearch_clicked_cb (GtkButton *btn, GtkWidget *searchBar)
+void btnSearch_toggled_cb (GtkToggleButton *btn, GtkWidget *searchBar)
 {
-    // Show search bar and be ready to show search results.
-    if (!gtk_widget_is_visible (searchBar)) {
-        gtk_widget_show (searchBar);
-        gtk_search_bar_set_search_mode (GTK_SEARCH_BAR (searchBar), TRUE);
+    // If 'btn' is toggled, show search bar and be ready to show search results.
+    if (gtk_toggle_button_get_active (btn)) {
+        if (!gtk_widget_is_visible (searchBar)) {
+            gtk_widget_show (searchBar);
+            gtk_search_bar_set_search_mode (GTK_SEARCH_BAR (searchBar), TRUE);
+        } else {}
     } else {
         gtk_widget_hide (searchBar);
     }
