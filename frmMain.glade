@@ -786,10 +786,85 @@ Author: Junde Yhi
                   </packing>
                 </child>
                 <child>
-                  <placeholder/>
+                  <object class="GtkBox">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="orientation">vertical</property>
+                    <child>
+                      <object class="GtkLabel" id="lblContentTitleMain">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">Lorem ipsum</property>
+                        <property name="wrap">True</property>
+                        <property name="ellipsize">end</property>
+                        <attributes>
+                          <attribute name="weight" value="bold"/>
+                          <attribute name="scale" value="3.5"/>
+                        </attributes>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel" id="lblContentTitleSub">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">Lorem ipsum dolor sit amet. | Editor: Lion | Commited at: 1990/01/01 00:00</property>
+                        <property name="ellipsize">end</property>
+                        <attributes>
+                          <attribute name="scale" value="1.25"/>
+                        </attributes>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">1</property>
+                  </packing>
                 </child>
                 <child>
-                  <placeholder/>
+                  <object class="GtkStack" id="stackContentTextImage">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <child>
+                      <object class="GtkTextView" id="textViewContent">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="editable">False</property>
+                        <property name="wrap_mode">word</property>
+                      </object>
+                      <packing>
+                        <property name="name">page0</property>
+                        <property name="title" translatable="yes">page0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkImage" id="imgViewContent">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="stock">gtk-missing-image</property>
+                      </object>
+                      <packing>
+                        <property name="name">page1</property>
+                        <property name="title" translatable="yes">page1</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">2</property>
+                  </packing>
                 </child>
               </object>
               <packing>
