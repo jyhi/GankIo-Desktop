@@ -37,7 +37,7 @@ Author: Junde Yhi
     <property name="default_height">505</property>
     <property name="destroy_with_parent">True</property>
     <property name="icon_name">applications-internet</property>
-    <signal name="destroy" handler="exit" swapped="no"/>
+    <signal name="destroy" handler="gtk_main_quit" swapped="no"/>
     <child>
       <object class="GtkBox" id="boxMain">
         <property name="visible">True</property>
