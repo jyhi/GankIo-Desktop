@@ -667,8 +667,8 @@ Author: Junde Yhi
                 </child>
               </object>
               <packing>
-                <property name="name">page0</property>
-                <property name="title" translatable="yes">page0</property>
+                <property name="name">Info</property>
+                <property name="title">Info</property>
               </packing>
             </child>
             <child>
@@ -687,6 +687,7 @@ Author: Junde Yhi
                         <property name="receives_default">True</property>
                         <property name="use_underline">True</property>
                         <property name="always_show_image">True</property>
+                        <signal name="clicked" handler="btnContentBack_clicked_cb" object="stackInfoContent" swapped="no"/>
                         <child>
                           <object class="GtkBox">
                             <property name="visible">True</property>
@@ -757,6 +758,7 @@ Author: Junde Yhi
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
+                            <signal name="clicked" handler="btnContentSettings_clicked_cb" object="popoverMenuContentSettings" swapped="no"/>
                             <child>
                               <object class="GtkImage">
                                 <property name="visible">True</property>
@@ -868,8 +870,8 @@ Author: Junde Yhi
                 </child>
               </object>
               <packing>
-                <property name="name">page1</property>
-                <property name="title" translatable="yes">page1</property>
+                <property name="name">Content</property>
+                <property name="title">Content</property>
                 <property name="position">1</property>
               </packing>
             </child>
@@ -888,7 +890,7 @@ Author: Junde Yhi
   <object class="GtkListStore" id="listStoreFrontEnd"/>
   <object class="GtkListStore" id="listStoreIos"/>
   <object class="GtkListStore" id="listStoreSearch"/>
-  <object class="GtkPopoverMenu" id="popOverMenuContentSettings">
+  <object class="GtkPopoverMenu" id="popoverMenuContentSettings">
     <property name="can_focus">False</property>
     <property name="relative_to">btnContentSettings</property>
     <child>

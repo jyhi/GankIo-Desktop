@@ -23,6 +23,8 @@
 GtkWidget * header_bar_create (GtkWidget *searchBar);
 void searchEntryMain_stop_search_cb (GtkSearchEntry *entry, GtkWidget *searchBar);
 void btnSearch_toggled_cb (GtkToggleButton *btn, GtkWidget *stackShowSearch);
+void btnContentBack_clicked_cb (GtkButton *btn, GtkWidget *stackInfoContent);
+void btnContentSettings_clicked_cb (GtkButton *btn, GtkWidget *popoverMenuContentSettings);
 
 gint main (gint argc, gchar **argv)
 {
@@ -98,8 +100,27 @@ void btnSearch_toggled_cb (GtkToggleButton *btn, GtkWidget *stackShowSearch)
     if (child) {
         gtk_stack_set_visible_child (GTK_STACK (stackShowSearch), child);
     } else {
-        g_warning ("Cannot switch between content and search: child not found");
+        g_warning ("Cannot switch between show and search: child not found");
     }
 
+    return;
+}
+
+void btnContentBack_clicked_cb (GtkButton *btn, GtkWidget *stackInfoContent)
+{
+    GtkWidget *prev = gtk_stack_get_child_by_name (GTK_STACK (stackInfoContent), "Info");
+    if (prev) {
+        gtk_stack_set_visible_child (GTK_STACK (stackInfoContent), prev);
+    } else {
+        g_warning ("Cannot switch between info and content: child not found");
+    }
+
+    return;
+}
+
+void btnContentSettings_clicked_cb (GtkButton *btn, GtkWidget *popoverMenuContentSettings)
+{
+    // Show popup menu.
+    gtk_widget_set_visible (popoverMenuContentSettings, !gtk_widget_is_visible (popoverMenuContentSettings));
     return;
 }
