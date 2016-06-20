@@ -22,12 +22,12 @@
 
 GtkWidget * header_bar_create (GtkWidget *searchBar);
 void searchEntryMain_stop_search_cb (GtkSearchEntry *entry, GtkWidget *searchBar);
-void btnSearch_toggled_cb (GtkToggleButton *btn, GtkWidget *stackContentSearch);
+void btnSearch_toggled_cb (GtkToggleButton *btn, GtkWidget *stackShowContentSearch);
 
 gint main (gint argc, gchar **argv)
 {
     GtkWidget *frmMain = NULL;
-    GtkWidget *stackContentSearch = NULL;
+    GtkWidget *stackShowContentSearch = NULL;
     GtkBuilder *builder = NULL;
 
     gtk_init (&argc, &argv);
@@ -36,7 +36,7 @@ gint main (gint argc, gchar **argv)
 
     // Get object handles
     frmMain = GTK_WIDGET (gtk_builder_get_object (builder, "frmMain"));
-    stackContentSearch = GTK_WIDGET (gtk_builder_get_object (builder, "stackContentSearch"));
+    stackShowContentSearch = GTK_WIDGET (gtk_builder_get_object (builder, "stackShowContentSearch"));
 
     // Connect signals.
     // For particular signals, please refer to Glade files.
@@ -44,7 +44,7 @@ gint main (gint argc, gchar **argv)
 
     // Add a header bar for frmMain to make it prettier.
     // NOTE: It's impossible to create it in Glade.
-    GtkWidget *headerBar = header_bar_create (stackContentSearch);
+    GtkWidget *headerBar = header_bar_create (stackShowContentSearch);
     gtk_window_set_titlebar (GTK_WINDOW (frmMain), headerBar);
 
     gtk_widget_show_all (frmMain);
@@ -53,7 +53,7 @@ gint main (gint argc, gchar **argv)
     return 0;
 }
 
-GtkWidget * header_bar_create (GtkWidget *stackContentSearch)
+GtkWidget * header_bar_create (GtkWidget *stackShowContentSearch)
 {
     GtkWidget *header = gtk_header_bar_new ();
     gtk_header_bar_set_show_close_button (GTK_HEADER_BAR (header), TRUE);
@@ -69,7 +69,7 @@ GtkWidget * header_bar_create (GtkWidget *stackContentSearch)
     gtk_header_bar_pack_end (GTK_HEADER_BAR (header), btn);
 
     // Connect the search button's "toggled" signal to the search bar
-    g_signal_connect (btn, "toggled", G_CALLBACK (btnSearch_toggled_cb), stackContentSearch);
+    g_signal_connect (btn, "toggled", G_CALLBACK (btnSearch_toggled_cb), stackShowContentSearch);
 
     return header;
 }
@@ -82,7 +82,7 @@ void searchEntryMain_stop_search_cb (GtkSearchEntry *entry, GtkWidget *searchBar
     return;
 }
 
-void btnSearch_toggled_cb (GtkToggleButton *btn, GtkWidget *stackContentSearch)
+void btnSearch_toggled_cb (GtkToggleButton *btn, GtkWidget *stackShowContentSearch)
 {
     GtkWidget *child = NULL;
 
@@ -90,13 +90,13 @@ void btnSearch_toggled_cb (GtkToggleButton *btn, GtkWidget *stackContentSearch)
     //       We need to get the child of the stack first, and then perform switch.
     //       See Glade file for particular child name.
     if (gtk_toggle_button_get_active (btn)) {
-        child = gtk_stack_get_child_by_name (GTK_STACK (stackContentSearch), "Search");
+        child = gtk_stack_get_child_by_name (GTK_STACK (stackShowContentSearch), "Search");
     } else {
-        child = gtk_stack_get_child_by_name (GTK_STACK (stackContentSearch), "Content");
+        child = gtk_stack_get_child_by_name (GTK_STACK (stackShowContentSearch), "Content");
     }
 
     if (child) {
-        gtk_stack_set_visible_child (GTK_STACK (stackContentSearch), child);
+        gtk_stack_set_visible_child (GTK_STACK (stackShowContentSearch), child);
     } else {
         g_warning ("Cannot switch between content and search: child not found");
     }

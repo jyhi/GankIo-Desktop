@@ -50,12 +50,12 @@ Author: Junde Yhi
         <property name="orientation">vertical</property>
         <property name="spacing">5</property>
         <child>
-          <object class="GtkStack" id="stackContentSearch">
+          <object class="GtkStack" id="stackShowContentSearch">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="transition_type">crossfade</property>
             <child>
-              <object class="GtkBox" id="boxContent">
+              <object class="GtkBox" id="boxShow">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="orientation">vertical</property>
@@ -660,6 +660,27 @@ Author: Junde Yhi
                 <property name="name">Search</property>
                 <property name="title" translatable="yes" context="This page title is not visible to user.">Search</property>
                 <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkBox" id="boxContent">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="orientation">vertical</property>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+              </object>
+              <packing>
+                <property name="name">page0</property>
+                <property name="title" translatable="yes">page0</property>
+                <property name="position">2</property>
               </packing>
             </child>
           </object>
