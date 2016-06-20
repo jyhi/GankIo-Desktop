@@ -28,11 +28,6 @@ Author: Junde Yhi
   <!-- interface-description Desktop client for gank.io -->
   <!-- interface-copyright 2016 Junde Yhi -->
   <!-- interface-authors Junde Yhi -->
-  <object class="GtkListStore" id="listStoreAndroid"/>
-  <object class="GtkListStore" id="listStoreExtendResources"/>
-  <object class="GtkListStore" id="listStoreFrontEnd"/>
-  <object class="GtkListStore" id="listStoreIos"/>
-  <object class="GtkListStore" id="listStoreSearch"/>
   <object class="GtkApplicationWindow" id="frmMain">
     <property name="can_focus">False</property>
     <property name="border_width">10</property>
@@ -50,628 +45,622 @@ Author: Junde Yhi
         <property name="orientation">vertical</property>
         <property name="spacing">5</property>
         <child>
-          <object class="GtkStack" id="stackShowContentSearch">
+          <object class="GtkStack" id="stackInfoContent">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="transition_type">crossfade</property>
             <child>
-              <object class="GtkBox" id="boxShow">
+              <object class="GtkStack" id="stackShowSearch">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="orientation">vertical</property>
+                <property name="transition_type">crossfade</property>
                 <child>
-                  <object class="GtkStackSwitcher">
+                  <object class="GtkBox" id="boxShow">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="halign">center</property>
-                    <property name="valign">center</property>
-                    <property name="stack">stackDailySorted</property>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">0</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkStack" id="stackDailySorted">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="hexpand">True</property>
-                    <property name="vexpand">True</property>
+                    <property name="orientation">vertical</property>
                     <child>
-                      <object class="GtkBox">
+                      <object class="GtkStackSwitcher">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="stack">stackDailySorted</property>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkStack" id="stackDailySorted">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="hexpand">True</property>
                         <property name="vexpand">True</property>
-                        <property name="orientation">vertical</property>
-                        <property name="spacing">5</property>
                         <child>
-                          <object class="GtkGrid" id="gridPicMovToday">
-                            <property name="width_request">800</property>
-                            <property name="height_request">250</property>
+                          <object class="GtkBox">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="hexpand">True</property>
                             <property name="vexpand">True</property>
-                            <property name="column_spacing">10</property>
-                            <property name="row_homogeneous">True</property>
-                            <property name="column_homogeneous">True</property>
+                            <property name="orientation">vertical</property>
+                            <property name="spacing">5</property>
                             <child>
-                              <object class="GtkFrame" id="framePicToday">
+                              <object class="GtkGrid" id="gridPicMovToday">
+                                <property name="width_request">800</property>
+                                <property name="height_request">250</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="label_xalign">0</property>
-                                <property name="shadow_type">none</property>
+                                <property name="hexpand">True</property>
+                                <property name="vexpand">True</property>
+                                <property name="column_spacing">10</property>
+                                <property name="row_homogeneous">True</property>
+                                <property name="column_homogeneous">True</property>
                                 <child>
-                                  <object class="GtkAlignment">
+                                  <object class="GtkFrame" id="framePicToday">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
-                                    <property name="left_padding">12</property>
+                                    <property name="label_xalign">0</property>
+                                    <property name="shadow_type">none</property>
                                     <child>
-                                      <object class="GtkStack" id="stackPicTodaySpinPic">
+                                      <object class="GtkAlignment">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
+                                        <property name="left_padding">12</property>
                                         <child>
-                                          <object class="GtkSpinner">
+                                          <object class="GtkStack" id="stackPicTodaySpinPic">
                                             <property name="visible">True</property>
                                             <property name="can_focus">False</property>
-                                            <property name="halign">center</property>
-                                            <property name="valign">center</property>
-                                            <property name="active">True</property>
-                                          </object>
-                                          <packing>
-                                            <property name="name">page0</property>
-                                            <property name="title" translatable="yes">page0</property>
-                                          </packing>
-                                        </child>
-                                        <child>
-                                          <object class="GtkButton" id="btnPicToday">
-                                            <property name="visible">True</property>
-                                            <property name="can_focus">True</property>
-                                            <property name="receives_default">True</property>
-                                            <property name="relief">none</property>
                                             <child>
-                                              <object class="GtkImage" id="imgPicToday">
+                                              <object class="GtkSpinner">
                                                 <property name="visible">True</property>
                                                 <property name="can_focus">False</property>
-                                                <property name="stock">gtk-missing-image</property>
+                                                <property name="halign">center</property>
+                                                <property name="valign">center</property>
+                                                <property name="active">True</property>
                                               </object>
+                                              <packing>
+                                                <property name="name">page0</property>
+                                                <property name="title" translatable="yes">page0</property>
+                                              </packing>
+                                            </child>
+                                            <child>
+                                              <object class="GtkButton" id="btnPicToday">
+                                                <property name="visible">True</property>
+                                                <property name="can_focus">True</property>
+                                                <property name="receives_default">True</property>
+                                                <property name="relief">none</property>
+                                                <child>
+                                                  <object class="GtkImage" id="imgPicToday">
+                                                    <property name="visible">True</property>
+                                                    <property name="can_focus">False</property>
+                                                    <property name="stock">gtk-missing-image</property>
+                                                  </object>
+                                                </child>
+                                              </object>
+                                              <packing>
+                                                <property name="name">page1</property>
+                                                <property name="title" translatable="yes">page1</property>
+                                                <property name="position">1</property>
+                                              </packing>
                                             </child>
                                           </object>
-                                          <packing>
-                                            <property name="name">page1</property>
-                                            <property name="title" translatable="yes">page1</property>
-                                            <property name="position">1</property>
-                                          </packing>
+                                        </child>
+                                      </object>
+                                    </child>
+                                    <child type="label">
+                                      <object class="GtkButton" id="btnPicTodayTitle">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">True</property>
+                                        <property name="receives_default">True</property>
+                                        <property name="relief">none</property>
+                                        <child>
+                                          <object class="GtkLabel">
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">False</property>
+                                            <property name="label" translatable="yes" context="&quot;Meizi&quot; in Mandarin means cute girls.">Meizi Today</property>
+                                            <attributes>
+                                              <attribute name="weight" value="bold"/>
+                                              <attribute name="scale" value="1.5"/>
+                                            </attributes>
+                                          </object>
                                         </child>
                                       </object>
                                     </child>
                                   </object>
+                                  <packing>
+                                    <property name="left_attach">0</property>
+                                    <property name="top_attach">0</property>
+                                  </packing>
                                 </child>
-                                <child type="label">
-                                  <object class="GtkButton" id="btnPicTodayTitle">
+                                <child>
+                                  <object class="GtkFrame" id="frameMovieToday">
                                     <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="receives_default">True</property>
-                                    <property name="relief">none</property>
+                                    <property name="can_focus">False</property>
+                                    <property name="label_xalign">0</property>
+                                    <property name="shadow_type">none</property>
                                     <child>
-                                      <object class="GtkLabel">
+                                      <object class="GtkAlignment">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
-                                        <property name="label" translatable="yes" context="&quot;Meizi&quot; in Mandarin means cute girls.">Meizi Today</property>
-                                        <attributes>
-                                          <attribute name="weight" value="bold"/>
-                                          <attribute name="scale" value="1.5"/>
-                                        </attributes>
+                                        <property name="left_padding">12</property>
+                                        <child>
+                                          <object class="GtkStack" id="stackMovTodaySpinMov">
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">False</property>
+                                            <child>
+                                              <object class="GtkSpinner">
+                                                <property name="visible">True</property>
+                                                <property name="can_focus">False</property>
+                                                <property name="halign">center</property>
+                                                <property name="valign">center</property>
+                                                <property name="active">True</property>
+                                              </object>
+                                              <packing>
+                                                <property name="name">page0</property>
+                                                <property name="title" translatable="yes">page0</property>
+                                              </packing>
+                                            </child>
+                                            <child>
+                                              <object class="GtkButton" id="btnMovToday">
+                                                <property name="visible">True</property>
+                                                <property name="can_focus">True</property>
+                                                <property name="receives_default">True</property>
+                                                <property name="relief">none</property>
+                                                <child>
+                                                  <object class="GtkImage" id="imgMovToday">
+                                                    <property name="visible">True</property>
+                                                    <property name="can_focus">False</property>
+                                                    <property name="stock">gtk-missing-image</property>
+                                                  </object>
+                                                </child>
+                                              </object>
+                                              <packing>
+                                                <property name="name">page1</property>
+                                                <property name="title" translatable="yes">page1</property>
+                                                <property name="position">1</property>
+                                              </packing>
+                                            </child>
+                                          </object>
+                                        </child>
+                                      </object>
+                                    </child>
+                                    <child type="label">
+                                      <object class="GtkButton" id="btnMovTodayTitle">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">True</property>
+                                        <property name="receives_default">True</property>
+                                        <property name="relief">none</property>
+                                        <child>
+                                          <object class="GtkLabel">
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">False</property>
+                                            <property name="label" translatable="yes">Relaxing Movie Today</property>
+                                            <attributes>
+                                              <attribute name="weight" value="bold"/>
+                                              <attribute name="scale" value="1.5"/>
+                                            </attributes>
+                                          </object>
+                                        </child>
                                       </object>
                                     </child>
                                   </object>
+                                  <packing>
+                                    <property name="left_attach">1</property>
+                                    <property name="top_attach">0</property>
+                                  </packing>
                                 </child>
                               </object>
                               <packing>
-                                <property name="left_attach">0</property>
-                                <property name="top_attach">0</property>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">0</property>
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkFrame" id="frameMovieToday">
+                              <object class="GtkGrid" id="gridInformation">
+                                <property name="width_request">800</property>
+                                <property name="height_request">200</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="label_xalign">0</property>
-                                <property name="shadow_type">none</property>
+                                <property name="hexpand">True</property>
+                                <property name="vexpand">True</property>
+                                <property name="column_spacing">10</property>
+                                <property name="row_homogeneous">True</property>
+                                <property name="column_homogeneous">True</property>
                                 <child>
-                                  <object class="GtkAlignment">
+                                  <object class="GtkFrame" id="frameAndroid">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
-                                    <property name="left_padding">12</property>
+                                    <property name="label_xalign">0</property>
+                                    <property name="shadow_type">none</property>
                                     <child>
-                                      <object class="GtkStack" id="stackMovTodaySpinMov">
+                                      <object class="GtkAlignment">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
+                                        <property name="left_padding">12</property>
                                         <child>
-                                          <object class="GtkSpinner">
+                                          <object class="GtkStack" id="stackAndroidSpinTreeView">
                                             <property name="visible">True</property>
                                             <property name="can_focus">False</property>
-                                            <property name="halign">center</property>
-                                            <property name="valign">center</property>
-                                            <property name="active">True</property>
-                                          </object>
-                                          <packing>
-                                            <property name="name">page0</property>
-                                            <property name="title" translatable="yes">page0</property>
-                                          </packing>
-                                        </child>
-                                        <child>
-                                          <object class="GtkButton" id="btnMovToday">
-                                            <property name="visible">True</property>
-                                            <property name="can_focus">True</property>
-                                            <property name="receives_default">True</property>
-                                            <property name="relief">none</property>
                                             <child>
-                                              <object class="GtkImage" id="imgMovToday">
+                                              <object class="GtkSpinner">
                                                 <property name="visible">True</property>
                                                 <property name="can_focus">False</property>
-                                                <property name="stock">gtk-missing-image</property>
+                                                <property name="halign">center</property>
+                                                <property name="valign">center</property>
+                                                <property name="active">True</property>
                                               </object>
+                                              <packing>
+                                                <property name="name">page0</property>
+                                                <property name="title" translatable="yes">page0</property>
+                                              </packing>
+                                            </child>
+                                            <child>
+                                              <object class="GtkTreeView" id="treeViewAndroid">
+                                                <property name="visible">True</property>
+                                                <property name="can_focus">True</property>
+                                                <property name="model">listStoreAndroid</property>
+                                                <child internal-child="selection">
+                                                  <object class="GtkTreeSelection"/>
+                                                </child>
+                                              </object>
+                                              <packing>
+                                                <property name="name">page1</property>
+                                                <property name="title" translatable="yes">page1</property>
+                                                <property name="position">1</property>
+                                              </packing>
                                             </child>
                                           </object>
-                                          <packing>
-                                            <property name="name">page1</property>
-                                            <property name="title" translatable="yes">page1</property>
-                                            <property name="position">1</property>
-                                          </packing>
+                                        </child>
+                                      </object>
+                                    </child>
+                                    <child type="label">
+                                      <object class="GtkButton" id="btnAndroidTitle">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">True</property>
+                                        <property name="receives_default">True</property>
+                                        <property name="relief">none</property>
+                                        <child>
+                                          <object class="GtkLabel">
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">False</property>
+                                            <property name="label" translatable="yes">Android</property>
+                                            <attributes>
+                                              <attribute name="weight" value="bold"/>
+                                              <attribute name="scale" value="1.25"/>
+                                            </attributes>
+                                          </object>
                                         </child>
                                       </object>
                                     </child>
                                   </object>
+                                  <packing>
+                                    <property name="left_attach">0</property>
+                                    <property name="top_attach">0</property>
+                                  </packing>
                                 </child>
-                                <child type="label">
-                                  <object class="GtkButton" id="btnMovTodayTitle">
+                                <child>
+                                  <object class="GtkFrame" id="frameIos">
                                     <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="receives_default">True</property>
-                                    <property name="relief">none</property>
+                                    <property name="can_focus">False</property>
+                                    <property name="label_xalign">0</property>
+                                    <property name="shadow_type">none</property>
                                     <child>
-                                      <object class="GtkLabel">
+                                      <object class="GtkAlignment">
                                         <property name="visible">True</property>
                                         <property name="can_focus">False</property>
-                                        <property name="label" translatable="yes">Relaxing Movie Today</property>
-                                        <attributes>
-                                          <attribute name="weight" value="bold"/>
-                                          <attribute name="scale" value="1.5"/>
-                                        </attributes>
+                                        <property name="left_padding">12</property>
+                                        <child>
+                                          <object class="GtkStack" id="stackIosSpinTreeView">
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">False</property>
+                                            <child>
+                                              <object class="GtkSpinner">
+                                                <property name="visible">True</property>
+                                                <property name="can_focus">False</property>
+                                                <property name="halign">center</property>
+                                                <property name="valign">center</property>
+                                                <property name="active">True</property>
+                                              </object>
+                                              <packing>
+                                                <property name="name">page0</property>
+                                                <property name="title" translatable="yes">page0</property>
+                                              </packing>
+                                            </child>
+                                            <child>
+                                              <object class="GtkTreeView" id="treeViewIos">
+                                                <property name="visible">True</property>
+                                                <property name="can_focus">True</property>
+                                                <property name="model">listStoreIos</property>
+                                                <child internal-child="selection">
+                                                  <object class="GtkTreeSelection"/>
+                                                </child>
+                                              </object>
+                                              <packing>
+                                                <property name="name">page1</property>
+                                                <property name="title" translatable="yes">page1</property>
+                                                <property name="position">1</property>
+                                              </packing>
+                                            </child>
+                                          </object>
+                                        </child>
+                                      </object>
+                                    </child>
+                                    <child type="label">
+                                      <object class="GtkButton" id="btnIosTitle">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">True</property>
+                                        <property name="receives_default">True</property>
+                                        <property name="relief">none</property>
+                                        <child>
+                                          <object class="GtkLabel">
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">False</property>
+                                            <property name="label" translatable="yes">iOS</property>
+                                            <attributes>
+                                              <attribute name="weight" value="bold"/>
+                                              <attribute name="scale" value="1.25"/>
+                                            </attributes>
+                                          </object>
+                                        </child>
                                       </object>
                                     </child>
                                   </object>
+                                  <packing>
+                                    <property name="left_attach">1</property>
+                                    <property name="top_attach">0</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkFrame" id="frameFrontEnd">
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">False</property>
+                                    <property name="label_xalign">0</property>
+                                    <property name="shadow_type">none</property>
+                                    <child>
+                                      <object class="GtkAlignment">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">False</property>
+                                        <property name="left_padding">12</property>
+                                        <child>
+                                          <object class="GtkStack" id="stackFrontEndSpinTreeView">
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">False</property>
+                                            <child>
+                                              <object class="GtkSpinner">
+                                                <property name="visible">True</property>
+                                                <property name="can_focus">False</property>
+                                                <property name="halign">center</property>
+                                                <property name="valign">center</property>
+                                                <property name="active">True</property>
+                                              </object>
+                                              <packing>
+                                                <property name="name">page0</property>
+                                                <property name="title" translatable="yes">page0</property>
+                                              </packing>
+                                            </child>
+                                            <child>
+                                              <object class="GtkTreeView" id="treeViewFrontEnd">
+                                                <property name="visible">True</property>
+                                                <property name="can_focus">True</property>
+                                                <property name="model">listStoreFrontEnd</property>
+                                                <child internal-child="selection">
+                                                  <object class="GtkTreeSelection"/>
+                                                </child>
+                                              </object>
+                                              <packing>
+                                                <property name="name">page1</property>
+                                                <property name="title" translatable="yes">page1</property>
+                                                <property name="position">1</property>
+                                              </packing>
+                                            </child>
+                                          </object>
+                                        </child>
+                                      </object>
+                                    </child>
+                                    <child type="label">
+                                      <object class="GtkButton" id="btnFrontEndTitle">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">True</property>
+                                        <property name="receives_default">True</property>
+                                        <property name="relief">none</property>
+                                        <child>
+                                          <object class="GtkLabel">
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">False</property>
+                                            <property name="label" translatable="yes">Front End</property>
+                                            <attributes>
+                                              <attribute name="weight" value="bold"/>
+                                              <attribute name="scale" value="1.25"/>
+                                            </attributes>
+                                          </object>
+                                        </child>
+                                      </object>
+                                    </child>
+                                  </object>
+                                  <packing>
+                                    <property name="left_attach">2</property>
+                                    <property name="top_attach">0</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkFrame" id="frameExtendResources">
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">False</property>
+                                    <property name="label_xalign">0</property>
+                                    <property name="shadow_type">none</property>
+                                    <child>
+                                      <object class="GtkAlignment">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">False</property>
+                                        <property name="left_padding">12</property>
+                                        <child>
+                                          <object class="GtkStack" id="stackExtendResSpinTreeView">
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">False</property>
+                                            <child>
+                                              <object class="GtkSpinner">
+                                                <property name="visible">True</property>
+                                                <property name="can_focus">False</property>
+                                                <property name="halign">center</property>
+                                                <property name="valign">center</property>
+                                                <property name="active">True</property>
+                                              </object>
+                                              <packing>
+                                                <property name="name">page0</property>
+                                                <property name="title" translatable="yes">page0</property>
+                                              </packing>
+                                            </child>
+                                            <child>
+                                              <object class="GtkTreeView" id="treeViewExtendRes">
+                                                <property name="visible">True</property>
+                                                <property name="can_focus">True</property>
+                                                <property name="model">listStoreExtendResources</property>
+                                                <child internal-child="selection">
+                                                  <object class="GtkTreeSelection"/>
+                                                </child>
+                                              </object>
+                                              <packing>
+                                                <property name="name">page1</property>
+                                                <property name="title" translatable="yes">page1</property>
+                                                <property name="position">1</property>
+                                              </packing>
+                                            </child>
+                                          </object>
+                                        </child>
+                                      </object>
+                                    </child>
+                                    <child type="label">
+                                      <object class="GtkButton" id="btnExtendResTitle">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">True</property>
+                                        <property name="receives_default">True</property>
+                                        <property name="relief">none</property>
+                                        <child>
+                                          <object class="GtkLabel">
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">False</property>
+                                            <property name="label" translatable="yes">Extend Resources</property>
+                                            <attributes>
+                                              <attribute name="weight" value="bold"/>
+                                              <attribute name="scale" value="1.25"/>
+                                            </attributes>
+                                          </object>
+                                        </child>
+                                      </object>
+                                    </child>
+                                  </object>
+                                  <packing>
+                                    <property name="left_attach">3</property>
+                                    <property name="top_attach">0</property>
+                                  </packing>
                                 </child>
                               </object>
                               <packing>
-                                <property name="left_attach">1</property>
-                                <property name="top_attach">0</property>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">1</property>
                               </packing>
                             </child>
                           </object>
                           <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkGrid" id="gridInformation">
-                            <property name="width_request">800</property>
-                            <property name="height_request">200</property>
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="hexpand">True</property>
-                            <property name="vexpand">True</property>
-                            <property name="column_spacing">10</property>
-                            <property name="row_homogeneous">True</property>
-                            <property name="column_homogeneous">True</property>
-                            <child>
-                              <object class="GtkFrame" id="frameAndroid">
-                                <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="label_xalign">0</property>
-                                <property name="shadow_type">none</property>
-                                <child>
-                                  <object class="GtkAlignment">
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">False</property>
-                                    <property name="left_padding">12</property>
-                                    <child>
-                                      <object class="GtkStack" id="stackAndroidSpinTreeView">
-                                        <property name="visible">True</property>
-                                        <property name="can_focus">False</property>
-                                        <child>
-                                          <object class="GtkSpinner">
-                                            <property name="visible">True</property>
-                                            <property name="can_focus">False</property>
-                                            <property name="halign">center</property>
-                                            <property name="valign">center</property>
-                                            <property name="active">True</property>
-                                          </object>
-                                          <packing>
-                                            <property name="name">page0</property>
-                                            <property name="title" translatable="yes">page0</property>
-                                          </packing>
-                                        </child>
-                                        <child>
-                                          <object class="GtkTreeView" id="treeViewAndroid">
-                                            <property name="visible">True</property>
-                                            <property name="can_focus">True</property>
-                                            <property name="model">listStoreAndroid</property>
-                                            <child internal-child="selection">
-                                              <object class="GtkTreeSelection"/>
-                                            </child>
-                                          </object>
-                                          <packing>
-                                            <property name="name">page1</property>
-                                            <property name="title" translatable="yes">page1</property>
-                                            <property name="position">1</property>
-                                          </packing>
-                                        </child>
-                                      </object>
-                                    </child>
-                                  </object>
-                                </child>
-                                <child type="label">
-                                  <object class="GtkButton" id="btnAndroidTitle">
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="receives_default">True</property>
-                                    <property name="relief">none</property>
-                                    <child>
-                                      <object class="GtkLabel">
-                                        <property name="visible">True</property>
-                                        <property name="can_focus">False</property>
-                                        <property name="label" translatable="yes">Android</property>
-                                        <attributes>
-                                          <attribute name="weight" value="bold"/>
-                                          <attribute name="scale" value="1.25"/>
-                                        </attributes>
-                                      </object>
-                                    </child>
-                                  </object>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="left_attach">0</property>
-                                <property name="top_attach">0</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkFrame" id="frameIos">
-                                <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="label_xalign">0</property>
-                                <property name="shadow_type">none</property>
-                                <child>
-                                  <object class="GtkAlignment">
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">False</property>
-                                    <property name="left_padding">12</property>
-                                    <child>
-                                      <object class="GtkStack" id="stackIosSpinTreeView">
-                                        <property name="visible">True</property>
-                                        <property name="can_focus">False</property>
-                                        <child>
-                                          <object class="GtkSpinner">
-                                            <property name="visible">True</property>
-                                            <property name="can_focus">False</property>
-                                            <property name="halign">center</property>
-                                            <property name="valign">center</property>
-                                            <property name="active">True</property>
-                                          </object>
-                                          <packing>
-                                            <property name="name">page0</property>
-                                            <property name="title" translatable="yes">page0</property>
-                                          </packing>
-                                        </child>
-                                        <child>
-                                          <object class="GtkTreeView" id="treeViewIos">
-                                            <property name="visible">True</property>
-                                            <property name="can_focus">True</property>
-                                            <property name="model">listStoreIos</property>
-                                            <child internal-child="selection">
-                                              <object class="GtkTreeSelection"/>
-                                            </child>
-                                          </object>
-                                          <packing>
-                                            <property name="name">page1</property>
-                                            <property name="title" translatable="yes">page1</property>
-                                            <property name="position">1</property>
-                                          </packing>
-                                        </child>
-                                      </object>
-                                    </child>
-                                  </object>
-                                </child>
-                                <child type="label">
-                                  <object class="GtkButton" id="btnIosTitle">
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="receives_default">True</property>
-                                    <property name="relief">none</property>
-                                    <child>
-                                      <object class="GtkLabel">
-                                        <property name="visible">True</property>
-                                        <property name="can_focus">False</property>
-                                        <property name="label" translatable="yes">iOS</property>
-                                        <attributes>
-                                          <attribute name="weight" value="bold"/>
-                                          <attribute name="scale" value="1.25"/>
-                                        </attributes>
-                                      </object>
-                                    </child>
-                                  </object>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="left_attach">1</property>
-                                <property name="top_attach">0</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkFrame" id="frameFrontEnd">
-                                <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="label_xalign">0</property>
-                                <property name="shadow_type">none</property>
-                                <child>
-                                  <object class="GtkAlignment">
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">False</property>
-                                    <property name="left_padding">12</property>
-                                    <child>
-                                      <object class="GtkStack" id="stackFrontEndSpinTreeView">
-                                        <property name="visible">True</property>
-                                        <property name="can_focus">False</property>
-                                        <child>
-                                          <object class="GtkSpinner">
-                                            <property name="visible">True</property>
-                                            <property name="can_focus">False</property>
-                                            <property name="halign">center</property>
-                                            <property name="valign">center</property>
-                                            <property name="active">True</property>
-                                          </object>
-                                          <packing>
-                                            <property name="name">page0</property>
-                                            <property name="title" translatable="yes">page0</property>
-                                          </packing>
-                                        </child>
-                                        <child>
-                                          <object class="GtkTreeView" id="treeViewFrontEnd">
-                                            <property name="visible">True</property>
-                                            <property name="can_focus">True</property>
-                                            <property name="model">listStoreFrontEnd</property>
-                                            <child internal-child="selection">
-                                              <object class="GtkTreeSelection"/>
-                                            </child>
-                                          </object>
-                                          <packing>
-                                            <property name="name">page1</property>
-                                            <property name="title" translatable="yes">page1</property>
-                                            <property name="position">1</property>
-                                          </packing>
-                                        </child>
-                                      </object>
-                                    </child>
-                                  </object>
-                                </child>
-                                <child type="label">
-                                  <object class="GtkButton" id="btnFrontEndTitle">
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="receives_default">True</property>
-                                    <property name="relief">none</property>
-                                    <child>
-                                      <object class="GtkLabel">
-                                        <property name="visible">True</property>
-                                        <property name="can_focus">False</property>
-                                        <property name="label" translatable="yes">Front End</property>
-                                        <attributes>
-                                          <attribute name="weight" value="bold"/>
-                                          <attribute name="scale" value="1.25"/>
-                                        </attributes>
-                                      </object>
-                                    </child>
-                                  </object>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="left_attach">2</property>
-                                <property name="top_attach">0</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkFrame" id="frameExtendResources">
-                                <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="label_xalign">0</property>
-                                <property name="shadow_type">none</property>
-                                <child>
-                                  <object class="GtkAlignment">
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">False</property>
-                                    <property name="left_padding">12</property>
-                                    <child>
-                                      <object class="GtkStack" id="stackExtendResSpinTreeView">
-                                        <property name="visible">True</property>
-                                        <property name="can_focus">False</property>
-                                        <child>
-                                          <object class="GtkSpinner">
-                                            <property name="visible">True</property>
-                                            <property name="can_focus">False</property>
-                                            <property name="halign">center</property>
-                                            <property name="valign">center</property>
-                                            <property name="active">True</property>
-                                          </object>
-                                          <packing>
-                                            <property name="name">page0</property>
-                                            <property name="title" translatable="yes">page0</property>
-                                          </packing>
-                                        </child>
-                                        <child>
-                                          <object class="GtkTreeView" id="treeViewExtendRes">
-                                            <property name="visible">True</property>
-                                            <property name="can_focus">True</property>
-                                            <property name="model">listStoreExtendResources</property>
-                                            <child internal-child="selection">
-                                              <object class="GtkTreeSelection"/>
-                                            </child>
-                                          </object>
-                                          <packing>
-                                            <property name="name">page1</property>
-                                            <property name="title" translatable="yes">page1</property>
-                                            <property name="position">1</property>
-                                          </packing>
-                                        </child>
-                                      </object>
-                                    </child>
-                                  </object>
-                                </child>
-                                <child type="label">
-                                  <object class="GtkButton" id="btnExtendResTitle">
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="receives_default">True</property>
-                                    <property name="relief">none</property>
-                                    <child>
-                                      <object class="GtkLabel">
-                                        <property name="visible">True</property>
-                                        <property name="can_focus">False</property>
-                                        <property name="label" translatable="yes">Extend Resources</property>
-                                        <attributes>
-                                          <attribute name="weight" value="bold"/>
-                                          <attribute name="scale" value="1.25"/>
-                                        </attributes>
-                                      </object>
-                                    </child>
-                                  </object>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="left_attach">3</property>
-                                <property name="top_attach">0</property>
-                              </packing>
-                            </child>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">1</property>
+                            <property name="title" translatable="yes">Today</property>
                           </packing>
                         </child>
                       </object>
                       <packing>
-                        <property name="title" translatable="yes" context="For the use of stack switcher on the top bar.">Today</property>
-                      </packing>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">1</property>
-                  </packing>
-                </child>
-              </object>
-              <packing>
-                <property name="name">Content</property>
-                <property name="title" translatable="yes" context="This page title is not visible to user.">Content</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkBox" id="boxSearch">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="orientation">vertical</property>
-                <child>
-                  <object class="GtkSearchBar" id="searchBarMain">
-                    <property name="visible">True</property>
-                    <property name="app_paintable">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="search_mode_enabled">True</property>
-                    <child>
-                      <object class="GtkSearchEntry" id="searchEntryMain">
-                        <property name="width_request">400</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="primary_icon_name">edit-find-symbolic</property>
-                        <property name="primary_icon_activatable">False</property>
-                        <property name="primary_icon_sensitive">False</property>
-                        <property name="placeholder_text" translatable="yes">Search</property>
-                        <signal name="stop-search" handler="searchEntryMain_stop_search_cb" object="searchBarMain" swapped="no"/>
-                      </object>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">0</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkStack" id="stackSearchTipResults">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="transition_type">crossfade</property>
-                    <child>
-                      <object class="GtkLabel" id="lblSearchTop">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Press Enter to search online.</property>
-                        <attributes>
-                          <attribute name="weight" value="bold"/>
-                          <attribute name="scale" value="1.5"/>
-                        </attributes>
-                      </object>
-                      <packing>
-                        <property name="name">page0</property>
-                        <property name="title" translatable="yes">page0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkTreeView" id="treeViewSearch">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="model">listStoreSearch</property>
-                        <child internal-child="selection">
-                          <object class="GtkTreeSelection"/>
-                        </child>
-                      </object>
-                      <packing>
-                        <property name="name">page1</property>
-                        <property name="title" translatable="yes">page1</property>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
                         <property name="position">1</property>
                       </packing>
                     </child>
                   </object>
                   <packing>
-                    <property name="expand">True</property>
-                    <property name="fill">True</property>
-                    <property name="position">1</property>
+                    <property name="name">Content</property>
+                    <property name="title" translatable="yes">Content</property>
                   </packing>
                 </child>
-              </object>
-              <packing>
-                <property name="name">Search</property>
-                <property name="title" translatable="yes" context="This page title is not visible to user.">Search</property>
-                <property name="position">1</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkBox" id="boxContent">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="orientation">vertical</property>
                 <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
+                  <object class="GtkBox" id="boxSearch">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="orientation">vertical</property>
+                    <child>
+                      <object class="GtkSearchBar" id="searchBarMain">
+                        <property name="visible">True</property>
+                        <property name="app_paintable">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="search_mode_enabled">True</property>
+                        <child>
+                          <object class="GtkSearchEntry" id="searchEntryMain">
+                            <property name="width_request">400</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="primary_icon_name">edit-find-symbolic</property>
+                            <property name="primary_icon_activatable">False</property>
+                            <property name="primary_icon_sensitive">False</property>
+                            <property name="placeholder_text" translatable="yes">Search</property>
+                            <signal name="stop-search" handler="searchEntryMain_stop_search_cb" object="searchBarMain" swapped="no"/>
+                          </object>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkStack" id="stackSearchTipResults">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="transition_type">crossfade</property>
+                        <child>
+                          <object class="GtkLabel" id="lblSearchTop">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="label" translatable="yes">Press Enter to search online.</property>
+                            <attributes>
+                              <attribute name="weight" value="bold"/>
+                              <attribute name="scale" value="1.5"/>
+                            </attributes>
+                          </object>
+                          <packing>
+                            <property name="name">page0</property>
+                            <property name="title" translatable="yes">page0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkTreeView" id="treeViewSearch">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="model">listStoreSearch</property>
+                            <child internal-child="selection">
+                              <object class="GtkTreeSelection"/>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="name">page1</property>
+                            <property name="title" translatable="yes">page1</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="name">Search</property>
+                    <property name="title" translatable="yes">Search</property>
+                    <property name="position">1</property>
+                  </packing>
                 </child>
                 <child>
                   <placeholder/>
@@ -680,17 +669,190 @@ Author: Junde Yhi
               <packing>
                 <property name="name">page0</property>
                 <property name="title" translatable="yes">page0</property>
-                <property name="position">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkBox" id="boxContent">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="orientation">vertical</property>
+                <child>
+                  <object class="GtkButtonBox">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <child>
+                      <object class="GtkButton" id="btnContentBack">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                        <property name="use_underline">True</property>
+                        <property name="always_show_image">True</property>
+                        <child>
+                          <object class="GtkBox">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <child>
+                              <object class="GtkImage">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="icon_name">go-previous-symbolic</property>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="label" translatable="yes">Back</property>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">False</property>
+                        <property name="fill">True</property>
+                        <property name="position">0</property>
+                        <property name="non_homogeneous">True</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkButtonBox">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="homogeneous">True</property>
+                        <property name="layout_style">expand</property>
+                        <child>
+                          <object class="GtkButton" id="btnContentSave">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="use_underline">True</property>
+                            <property name="always_show_image">True</property>
+                            <child>
+                              <object class="GtkImage">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="icon_name">document-save-symbolic</property>
+                              </object>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="expand">True</property>
+                            <property name="fill">True</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkButton" id="btnContentSettings">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <child>
+                              <object class="GtkImage">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="icon_name">system-run-symbolic</property>
+                              </object>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="expand">True</property>
+                            <property name="fill">True</property>
+                            <property name="position">1</property>
+                          </packing>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="expand">True</property>
+                        <property name="fill">True</property>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+              </object>
+              <packing>
+                <property name="name">page1</property>
+                <property name="title" translatable="yes">page1</property>
+                <property name="position">1</property>
               </packing>
             </child>
           </object>
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
-            <property name="position">1</property>
+            <property name="position">0</property>
           </packing>
         </child>
       </object>
+    </child>
+  </object>
+  <object class="GtkListStore" id="listStoreAndroid"/>
+  <object class="GtkListStore" id="listStoreExtendResources"/>
+  <object class="GtkListStore" id="listStoreFrontEnd"/>
+  <object class="GtkListStore" id="listStoreIos"/>
+  <object class="GtkListStore" id="listStoreSearch"/>
+  <object class="GtkPopoverMenu" id="popOverMenuContentSettings">
+    <property name="can_focus">False</property>
+    <property name="relative_to">btnContentSettings</property>
+    <child>
+      <object class="GtkGrid">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="row_spacing">5</property>
+        <property name="column_spacing">5</property>
+        <property name="row_homogeneous">True</property>
+        <property name="column_homogeneous">True</property>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes" context="Settings on content page">Font</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkFontButton" id="fontBtnContentSettings">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="font">Sans 12</property>
+            <property name="preview_text">多彩安同，多彩生活</property>
+            <property name="title" translatable="yes">Select Font</property>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+      </object>
+      <packing>
+        <property name="submenu">main</property>
+      </packing>
     </child>
   </object>
 </interface>
