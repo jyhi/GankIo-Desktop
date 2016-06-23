@@ -28,6 +28,11 @@ Author: Junde Yhi
   <!-- interface-description Desktop client for gank.io -->
   <!-- interface-copyright 2016 Junde Yhi -->
   <!-- interface-authors Junde Yhi -->
+  <object class="GtkListStore" id="listStoreAndroid"/>
+  <object class="GtkListStore" id="listStoreExtendResources"/>
+  <object class="GtkListStore" id="listStoreFrontEnd"/>
+  <object class="GtkListStore" id="listStoreIos"/>
+  <object class="GtkListStore" id="listStoreSearch"/>
   <object class="GtkApplicationWindow" id="frmMain">
     <property name="can_focus">False</property>
     <property name="border_width">10</property>
@@ -59,6 +64,7 @@ Author: Junde Yhi
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="orientation">vertical</property>
+                    <property name="spacing">5</property>
                     <child>
                       <object class="GtkStackSwitcher">
                         <property name="visible">True</property>
@@ -79,6 +85,7 @@ Author: Junde Yhi
                         <property name="can_focus">False</property>
                         <property name="hexpand">True</property>
                         <property name="vexpand">True</property>
+                        <property name="transition_type">crossfade</property>
                         <child>
                           <object class="GtkBox">
                             <property name="visible">True</property>
@@ -152,10 +159,12 @@ Author: Junde Yhi
                                     </child>
                                     <child type="label">
                                       <object class="GtkButton" id="btnPicTodayTitle">
+                                        <property name="name">btnPicTodayTitle</property>
                                         <property name="visible">True</property>
                                         <property name="can_focus">True</property>
                                         <property name="receives_default">True</property>
                                         <property name="relief">none</property>
+                                        <signal name="clicked" handler="btnsInfoTitle_clicked_cb" object="comboBoxTextSortedDataType" swapped="no"/>
                                         <child>
                                           <object class="GtkLabel">
                                             <property name="visible">True</property>
@@ -229,10 +238,12 @@ Author: Junde Yhi
                                     </child>
                                     <child type="label">
                                       <object class="GtkButton" id="btnMovTodayTitle">
+                                        <property name="name">btnMovTodayTitle</property>
                                         <property name="visible">True</property>
                                         <property name="can_focus">True</property>
                                         <property name="receives_default">True</property>
                                         <property name="relief">none</property>
+                                        <signal name="clicked" handler="btnsInfoTitle_clicked_cb" object="comboBoxTextSortedDataType" swapped="no"/>
                                         <child>
                                           <object class="GtkLabel">
                                             <property name="visible">True</property>
@@ -319,10 +330,12 @@ Author: Junde Yhi
                                     </child>
                                     <child type="label">
                                       <object class="GtkButton" id="btnAndroidTitle">
+                                        <property name="name">btnAndroidTitle</property>
                                         <property name="visible">True</property>
                                         <property name="can_focus">True</property>
                                         <property name="receives_default">True</property>
                                         <property name="relief">none</property>
+                                        <signal name="clicked" handler="btnsInfoTitle_clicked_cb" object="comboBoxTextSortedDataType" swapped="no"/>
                                         <child>
                                           <object class="GtkLabel">
                                             <property name="visible">True</property>
@@ -391,10 +404,12 @@ Author: Junde Yhi
                                     </child>
                                     <child type="label">
                                       <object class="GtkButton" id="btnIosTitle">
+                                        <property name="name">btnIosTitle</property>
                                         <property name="visible">True</property>
                                         <property name="can_focus">True</property>
                                         <property name="receives_default">True</property>
                                         <property name="relief">none</property>
+                                        <signal name="clicked" handler="btnsInfoTitle_clicked_cb" object="comboBoxTextSortedDataType" swapped="no"/>
                                         <child>
                                           <object class="GtkLabel">
                                             <property name="visible">True</property>
@@ -463,10 +478,12 @@ Author: Junde Yhi
                                     </child>
                                     <child type="label">
                                       <object class="GtkButton" id="btnFrontEndTitle">
+                                        <property name="name">btnFrontEndTitle</property>
                                         <property name="visible">True</property>
                                         <property name="can_focus">True</property>
                                         <property name="receives_default">True</property>
                                         <property name="relief">none</property>
+                                        <signal name="clicked" handler="btnsInfoTitle_clicked_cb" object="comboBoxTextSortedDataType" swapped="no"/>
                                         <child>
                                           <object class="GtkLabel">
                                             <property name="visible">True</property>
@@ -535,10 +552,12 @@ Author: Junde Yhi
                                     </child>
                                     <child type="label">
                                       <object class="GtkButton" id="btnExtendResTitle">
+                                        <property name="name">btnExtendResTitle</property>
                                         <property name="visible">True</property>
                                         <property name="can_focus">True</property>
                                         <property name="receives_default">True</property>
                                         <property name="relief">none</property>
+                                        <signal name="clicked" handler="btnsInfoTitle_clicked_cb" object="comboBoxTextSortedDataType" swapped="no"/>
                                         <child>
                                           <object class="GtkLabel">
                                             <property name="visible">True</property>
@@ -567,7 +586,150 @@ Author: Junde Yhi
                             </child>
                           </object>
                           <packing>
+                            <property name="name">Today</property>
                             <property name="title" translatable="yes">Today</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkBox">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="orientation">vertical</property>
+                            <child>
+                              <object class="GtkButtonBox">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <child>
+                                  <object class="GtkComboBoxText" id="comboBoxTextSortedDataType">
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">False</property>
+                                    <property name="active">0</property>
+                                    <items>
+                                      <item translatable="yes">Meizi</item>
+                                      <item translatable="yes">Relaxing Movies</item>
+                                      <item translatable="yes">Android</item>
+                                      <item translatable="yes">iOS</item>
+                                      <item translatable="yes">Front End</item>
+                                      <item translatable="yes">Extend Resources</item>
+                                    </items>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">True</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">0</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkButtonBox">
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">False</property>
+                                    <property name="layout_style">expand</property>
+                                    <child>
+                                      <object class="GtkButton" id="btnSortedDataNewer">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">True</property>
+                                        <property name="receives_default">True</property>
+                                        <child>
+                                          <object class="GtkBox">
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">False</property>
+                                            <child>
+                                              <object class="GtkImage">
+                                                <property name="visible">True</property>
+                                                <property name="can_focus">False</property>
+                                                <property name="icon_name">go-previous-symbolic</property>
+                                              </object>
+                                              <packing>
+                                                <property name="expand">False</property>
+                                                <property name="fill">True</property>
+                                                <property name="position">0</property>
+                                              </packing>
+                                            </child>
+                                            <child>
+                                              <object class="GtkLabel">
+                                                <property name="visible">True</property>
+                                                <property name="can_focus">False</property>
+                                                <property name="label" translatable="yes">Newer</property>
+                                              </object>
+                                              <packing>
+                                                <property name="expand">True</property>
+                                                <property name="fill">True</property>
+                                                <property name="position">1</property>
+                                              </packing>
+                                            </child>
+                                          </object>
+                                        </child>
+                                      </object>
+                                      <packing>
+                                        <property name="expand">True</property>
+                                        <property name="fill">True</property>
+                                        <property name="position">1</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkButton" id="btnSortedDataOlder">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">True</property>
+                                        <property name="receives_default">True</property>
+                                        <child>
+                                          <object class="GtkBox">
+                                            <property name="visible">True</property>
+                                            <property name="can_focus">False</property>
+                                            <child>
+                                              <object class="GtkLabel">
+                                                <property name="visible">True</property>
+                                                <property name="can_focus">False</property>
+                                                <property name="label" translatable="yes">Older</property>
+                                              </object>
+                                              <packing>
+                                                <property name="expand">True</property>
+                                                <property name="fill">True</property>
+                                                <property name="position">0</property>
+                                              </packing>
+                                            </child>
+                                            <child>
+                                              <object class="GtkImage">
+                                                <property name="visible">True</property>
+                                                <property name="can_focus">False</property>
+                                                <property name="icon_name">go-next-symbolic</property>
+                                              </object>
+                                              <packing>
+                                                <property name="expand">False</property>
+                                                <property name="fill">True</property>
+                                                <property name="position">1</property>
+                                              </packing>
+                                            </child>
+                                          </object>
+                                        </child>
+                                      </object>
+                                      <packing>
+                                        <property name="expand">True</property>
+                                        <property name="fill">True</property>
+                                        <property name="position">1</property>
+                                      </packing>
+                                    </child>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">True</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">1</property>
+                                  </packing>
+                                </child>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <placeholder/>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="name">Sorted Data</property>
+                            <property name="title" translatable="yes">Sorted Data</property>
+                            <property name="position">1</property>
                           </packing>
                         </child>
                       </object>
@@ -661,9 +823,6 @@ Author: Junde Yhi
                     <property name="title" translatable="yes">Search</property>
                     <property name="position">1</property>
                   </packing>
-                </child>
-                <child>
-                  <placeholder/>
                 </child>
               </object>
               <packing>
@@ -885,11 +1044,6 @@ Author: Junde Yhi
       </object>
     </child>
   </object>
-  <object class="GtkListStore" id="listStoreAndroid"/>
-  <object class="GtkListStore" id="listStoreExtendResources"/>
-  <object class="GtkListStore" id="listStoreFrontEnd"/>
-  <object class="GtkListStore" id="listStoreIos"/>
-  <object class="GtkListStore" id="listStoreSearch"/>
   <object class="GtkPopoverMenu" id="popoverMenuContentSettings">
     <property name="can_focus">False</property>
     <property name="relative_to">btnContentSettings</property>
@@ -918,7 +1072,7 @@ Author: Junde Yhi
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="font">Sans 12</property>
-            <property name="preview_text">多彩安同，多彩生活</property>
+            <property name="preview_text"/>
             <property name="title" translatable="yes">Select Font</property>
           </object>
           <packing>
@@ -929,7 +1083,9 @@ Author: Junde Yhi
       </object>
       <packing>
         <property name="submenu">main</property>
+        <property name="position">1</property>
       </packing>
     </child>
   </object>
+  <object class="GtkListStore" id="listStoreSortedDataType"/>
 </interface>
