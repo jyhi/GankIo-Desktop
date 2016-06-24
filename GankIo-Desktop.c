@@ -27,6 +27,7 @@ void btnContentBack_clicked_cb (GtkButton *btn, GtkWidget *stackInfoContent);
 void btnContentSettings_clicked_cb (GtkButton *btn, GtkWidget *popoverMenuContentSettings);
 
 void btnsInfoTitle_clicked_cb (GtkButton *btn, GtkWidget *comboBoxTextSortedDataType);
+void comboBoxTextSortedDataType_changed_cb (GtkComboBox *comboBox, GtkWidget *stackDailySorted);
 
 
 gint main (gint argc, gchar **argv)
@@ -133,25 +134,14 @@ void btnsInfoTitle_clicked_cb (GtkButton *btn, GtkWidget *comboBoxTextSortedData
     // Unified interface for title buttons in page "Today".
     // Determine which button is clicked, switch the stack, and change the combo box.
 
-    // First, get handle of the stack
-    GtkWidget  *stackDailySorted = NULL;
-    GtkBuilder *builder = gtk_builder_new_from_file ("frmMain.glade");
-    if (builder) {
-        stackDailySorted = GTK_WIDGET (gtk_builder_get_object (builder, "stackDailySorted"));
-        if (stackDailySorted) {
-            // Switch it
-            GtkWidget *child = gtk_stack_get_child_by_name (GTK_STACK (stackDailySorted), "Sorted Data");
-            g_assert_nonnull (child);
-
-            // FIXME: WTF? IT ISN'T SWITCHING?
-            gtk_stack_set_visible_child (GTK_STACK (stackDailySorted), child);
-            g_object_unref (child);
-        } else {
-            g_error ("%s: %s: %d: stackDailySorted lost.", __FILE__, __func__, __LINE__);
-        }
-    } else {
-        g_error ("%s: %s: %d: builder file lost.", __FILE__, __func__, __LINE__);
-    }
+    // NOTE: We just cannot switch the stack here by calling gtk_builder_get_object again:
+    //   - GtkBuilder doesn't manage constructed widgets; multiple calls to btnsInfoTitle_clicked_cb
+    //       will cause memory leak.
+    //   - When we construct a new GtkBuilder, a new instance is created. Thus, operations towards
+    //       this new GtkBuilder will make no sense on the current window.
+    //
+    // The switching function is now handled by the combo box itself (when content is changed).
+    //   See comboBoxTextSortedDataType_changed_cb
 
     // Change the combo box to the resource type which we need to look for
     // NOTE: 'btn' is the button clicked by user.
@@ -180,9 +170,13 @@ void btnsInfoTitle_clicked_cb (GtkButton *btn, GtkWidget *comboBoxTextSortedData
         g_warning ("%s: %s: %d: cannot get proper caller's widget name.", __FILE__, __func__, __LINE__);
     }
 
-    // Release resources
-    g_object_unref (stackDailySorted);
-    // g_object_unref (builder);
-
     return ;
+}
+
+void comboBoxTextSortedDataType_changed_cb (GtkComboBox *comboBox, GtkWidget *stackDailySorted)
+{
+    // Work around for btnsInfoTitle_clicked_cb's not switching the stack.
+    // When the text in combo box changed, switch the stackDailySorted to the sorted data page.
+    gtk_stack_set_visible_child_name (GTK_STACK (stackDailySorted), "Sorted Data");
+    return;
 }

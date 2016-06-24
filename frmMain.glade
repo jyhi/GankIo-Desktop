@@ -612,6 +612,7 @@ Author: Junde Yhi
                                       <item translatable="yes">Front End</item>
                                       <item translatable="yes">Extend Resources</item>
                                     </items>
+                                    <signal name="changed" handler="comboBoxTextSortedDataType_changed_cb" object="stackDailySorted" swapped="no"/>
                                   </object>
                                   <packing>
                                     <property name="expand">True</property>
