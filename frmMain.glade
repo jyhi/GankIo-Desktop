@@ -997,11 +997,12 @@ Author: Junde Yhi
                   <object class="GtkStack" id="stackContentTextImage">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="hexpand">True</property>
+                    <property name="vexpand">True</property>
                     <child>
                       <object class="GtkScrolledWindow">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
-                        <property name="min_content_height">380</property>
                         <child>
                           <object class="GtkTextView" id="textViewContent">
                             <property name="visible">True</property>
