@@ -29,6 +29,7 @@ void btnContentSettings_clicked_cb (GtkButton *btn, GtkWidget *popoverMenuConten
 void btnsInfoTitle_clicked_cb (GtkButton *btn, GtkWidget *comboBoxTextSortedDataType);
 void comboBoxTextSortedDataType_changed_cb (GtkComboBox *comboBox, GtkWidget *stackDailySorted);
 
+void btnPicToday_clicked_cb (GtkButton *btn, GtkWidget *stackInfoContent);
 
 gint main (gint argc, gchar **argv)
 {
@@ -170,7 +171,7 @@ void btnsInfoTitle_clicked_cb (GtkButton *btn, GtkWidget *comboBoxTextSortedData
         g_warning ("%s: %s: %d: cannot get proper caller's widget name.", __FILE__, __func__, __LINE__);
     }
 
-    return ;
+    return;
 }
 
 void comboBoxTextSortedDataType_changed_cb (GtkComboBox *comboBox, GtkWidget *stackDailySorted)
@@ -178,5 +179,11 @@ void comboBoxTextSortedDataType_changed_cb (GtkComboBox *comboBox, GtkWidget *st
     // Work around for btnsInfoTitle_clicked_cb's not switching the stack.
     // When the text in combo box changed, switch the stackDailySorted to the sorted data page.
     gtk_stack_set_visible_child_name (GTK_STACK (stackDailySorted), "Sorted Data");
+    return;
+}
+
+void btnPicToday_clicked_cb (GtkButton *btn, GtkWidget *stackInfoContent)
+{
+    gtk_stack_set_visible_child_name (GTK_STACK (stackInfoContent), "Content");
     return;
 }

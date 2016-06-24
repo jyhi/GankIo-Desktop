@@ -139,6 +139,7 @@ Author: Junde Yhi
                                                 <property name="can_focus">True</property>
                                                 <property name="receives_default">True</property>
                                                 <property name="relief">none</property>
+                                                <signal name="clicked" handler="btnPicToday_clicked_cb" object="stackInfoContent" swapped="no"/>
                                                 <child>
                                                   <object class="GtkImage" id="imgPicToday">
                                                     <property name="visible">True</property>
