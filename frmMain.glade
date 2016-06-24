@@ -998,11 +998,21 @@ Author: Junde Yhi
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <child>
-                      <object class="GtkTextView" id="textViewContent">
+                      <object class="GtkScrolledWindow">
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
-                        <property name="editable">False</property>
-                        <property name="wrap_mode">word</property>
+                        <property name="min_content_height">380</property>
+                        <child>
+                          <object class="GtkTextView" id="textViewContent">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="editable">False</property>
+                            <property name="wrap_mode">word</property>
+                            <property name="cursor_visible">False</property>
+                            <property name="buffer">textBufferContent</property>
+                            <property name="accepts_tab">False</property>
+                          </object>
+                        </child>
                       </object>
                       <packing>
                         <property name="name">page0</property>
@@ -1089,4 +1099,15 @@ Author: Junde Yhi
     </child>
   </object>
   <object class="GtkListStore" id="listStoreSortedDataType"/>
+  <object class="GtkTextBuffer" id="textBufferContent">
+    <property name="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vulputate erat ac euismod ultricies. Cras dignissim vitae dui at luctus. Vivamus varius, tellus ac commodo tincidunt, urna sapien egestas lorem, ut varius ligula urna sit amet lectus. Morbi sollicitudin dolor id lectus sollicitudin tincidunt. Maecenas condimentum, ipsum at tincidunt volutpat, libero orci porttitor orci, vitae sollicitudin nisi velit ac nunc. Ut laoreet, sapien ac dictum malesuada, tellus lectus rutrum massa, id tristique ex tellus non erat. Maecenas vitae quam auctor, vulputate tellus in, posuere purus. In hac habitasse platea dictumst. Aliquam erat volutpat. Fusce interdum quam ligula, vel pellentesque neque rutrum sit amet. Sed eget sodales felis, a auctor diam. Nullam ornare ullamcorper dui, consectetur pellentesque purus bibendum sit amet. Integer et sagittis magna, non accumsan augue.
+
+Suspendisse feugiat bibendum augue, ac consectetur erat tristique finibus. Cras rutrum turpis vitae cursus eleifend. Quisque a ligula sed velit mollis euismod. Proin maximus fermentum enim ac venenatis. Praesent tempor sit amet dolor sit amet cursus. Donec non scelerisque dui, non suscipit quam. Vestibulum ipsum purus, venenatis et egestas non, egestas id massa. Integer pulvinar placerat odio vitae ornare. Phasellus a orci pretium, elementum sapien sed, tincidunt eros. Morbi tempus dictum nunc, at molestie urna ornare a. Sed rhoncus gravida turpis et vestibulum.
+
+Pellentesque eu accumsan tellus. Praesent facilisis vehicula augue, quis auctor ante luctus nec. Donec pellentesque dapibus sem. Fusce facilisis egestas sapien. Phasellus molestie quam sed ultricies ullamcorper. Ut rhoncus, neque nec fringilla tristique, mauris lacus lacinia mauris, quis ornare turpis enim at ante. Cras vel odio quis massa iaculis pharetra. Suspendisse vehicula in arcu non gravida. Phasellus rutrum et mi nec laoreet. Nam mauris lacus, blandit tempus placerat et, mattis tristique dui. Pellentesque nec facilisis justo, rutrum lacinia ante. Phasellus non elementum lectus, ut pulvinar enim. Maecenas dictum varius pretium. Duis eget fermentum ante.
+
+Integer accumsan blandit dignissim. Nulla in placerat augue. Proin dapibus quam purus, eu hendrerit enim euismod imperdiet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis in tempor nisi. Aliquam eros sem, luctus mollis nunc quis, dictum tincidunt sem. Integer tempus lacus non risus bibendum tempus. Mauris tincidunt ex non magna accumsan ornare. Vivamus vel efficitur justo. Duis ac ante non leo semper tincidunt ut vel ex. Aliquam in velit a ante iaculis ornare quis quis justo. Suspendisse consectetur est eget lectus finibus, et bibendum tellus pulvinar.
+
+In sed purus sit amet sapien tincidunt aliquam vitae vestibulum nulla. Phasellus fringilla commodo magna sit amet varius. Praesent nulla sapien, vulputate in dictum in, tincidunt vitae magna. Mauris lorem magna, euismod vitae tellus non, rutrum pretium tortor. Suspendisse potenti. Aliquam porttitor nec eros at accumsan. Vivamus massa augue, rutrum vitae nisi rutrum, gravida consectetur dui. Fusce vestibulum malesuada mauris et lobortis. Nullam mollis ligula in est malesuada, eu tristique diam lobortis. </property>
+  </object>
 </interface>
